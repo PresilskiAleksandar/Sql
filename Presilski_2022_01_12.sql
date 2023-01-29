@@ -411,3 +411,113 @@ DELIMITER ;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+
+SELECT country,SUM(price) AS Vk_prodazba
+FROM modeli
+right JOIN marki
+ON modeli.marki_id=marki.marki_id
+WHERE eu LIKE 'y'
+GROUP BY country
+ORDER BY vk_prodazba DESC
+;
+
+SELECT * ,count(modeli.modeli_name) AS Br_Na_modeli,SUM(modeli.price) AS VK_prodazba
+FROM modeli
+right JOIN marki 
+ON modeli.marki_id=marki.marki_id
+WHERE eu LIKE 'Y'
+GROUP BY modeli_name
+ORDER BY br_na_modeli DESC;
+
+Select * 
+from modeli
+where price =(select min(price)from modeli);
+SELECT *
+FROM modeli 
+ORDER BY price asc
+LIMIT 1 ;
+
+Select * 
+from modeli
+where price =(select max(price)from modeli);
+SELECT *
+FROM modeli 
+ORDER BY price desc
+LIMIT 1 ;
+
+Select * from modeli where modeli_name LIKE 'A%';
+SELECT * FROM modeli
+WHERE color='#000000' AND price>=40000;
+
+SELECT country, SUM(price) AS Vk_prodazba
+FROM modeli
+right JOIN marki
+ON modeli.marki_id=marki.marki_id
+GROUP BY country
+ORDER BY vk_prodazba DESC;
+
+
+SELECT country,SUM(price) AS Vk_prodazba
+FROM modeli
+INNER JOIN marki
+ON modeli.marki_id=marki.marki_id
+WHERE eu LIKE 'y'
+GROUP BY country
+ORDER BY vk_prodazba DESC
+;
+
+SELECT modeli.*
+FROM modeli
+INNER JOIN marki
+ON modeli.marki_id = marki.marki_id
+WHERE marki.country like 'H'
+ORDER BY modeli.price DESC;
+
+SELECT * 
+FROM modeli
+RIGHT JOIN marki
+ON modeli.marki_id=marki.marki_id
+WHERE marki.country LIKE 'd' AND modeli.price BETWEEN 30000 AND 50000;
+
+
+SELECT * 
+FROM modeli
+RIGHT JOIN marki
+ON modeli.marki_id=marki.marki_id
+WHERE modeli.color LIKE '#000000' AND modeli.price BETWEEN 30000 AND 50000;
+
+
+SELECT * ,count(modeli.modeli_name) AS Br_Na_modeli,SUM(price) AS VK_prodazba
+FROM modeli
+Right JOIN marki 
+ON modeli.marki_id=marki.marki_id
+WHERE eu LIKE 'Y'
+GROUP BY modeli_name
+ORDER BY br_na_modeli DESC;
+
+SELECT *
+FROM marki
+WHERE eu=0;
+Select * 
+From marki
+WHERE country LIKE 'D' or country like 'H';
+
+SELECT country, COUNT(marki_id) AS Br_na_fabriki
+FROM marki
+GROUP BY country 
+ORDER BY br_na_fabriki DESC, country ASC ;
+
+Select * 
+from modeli  
+WHERE color LIKE '#000000';
+
+Select * 
+from modeli
+where price =(select min(price)from modeli);
+
+Select * 
+from modeli
+where price =(select max(price)from modeli);
+
+SELECT * FROM modeli
+WHERE color like '#000000' and price>=40000;
